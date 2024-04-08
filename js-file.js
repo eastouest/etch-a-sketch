@@ -22,12 +22,11 @@ function changeGrid() {
         prompt("Enter a value from 1 to 100");
     }
     else {
+        container.innerHTML = "";
         gridCount = (grid * grid);
-        alert(gridCount)
         for (let i = 0; i < gridCount; i++){
             const div = document.createElement('div');
             div.style.cssText = 'color: white; background: purple';
-            div.style.width = "(100/grid)%";
             div.textContent = 'hiya';
             container.appendChild(div);
         }
