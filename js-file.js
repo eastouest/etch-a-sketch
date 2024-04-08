@@ -3,7 +3,8 @@ container.style.cssText = 'display: flex; flex-wrap: wrap; flex-direction: row; 
 let gridCount = 256;
 for (let i = 0; i < gridCount; i++) {
     const div = document.createElement('div');
-    div.style.cssText = 'color: blue; background: white; width: 6.25%;'
+    div.style.cssText = 'color: white; background: purple; width: 6.25%;'
     div.textContent = 'Hello World!';
+    div.onmouseover = () => div.style.cssText = 'color: purple; background: white; width: 6.25%'
     container.appendChild(div);
 }
