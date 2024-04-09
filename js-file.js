@@ -14,6 +14,15 @@ function createGrid() {
     };
 };
 createGrid();
+function randomizeColor(min, max) {
+    r = parseInt(Math.round(Math.random() * (max - min) + min));
+    g = parseInt(Math.round(Math.random() * (max - min) + min));
+    b = parseInt(Math.round(Math.random() * (max - min) + min));
+    text1 = "rgb("
+    text2 = ")"
+    result = text1.concat(r, ", ", g, ", ", b, text2);
+    return result;
+    };
 
 function createTable() {
     let grid = prompt("Enter a value from 1 to 100");
@@ -30,10 +39,13 @@ function createTable() {
             table.appendChild(row);
 
             for (let c = 0; c < parseInt(grid); c++) {
-                const cell = document.createElement("td");
+                const cell = document.createElement("td"); // changed from var, which was making only the last cell change
                 cell.style.cssText = 'background-color: purple; color: white'; // Initial cell style
                 cell.textContent = "Hello world!";
-                cell.onmouseover = () => cell.style.cssText = 'background-color: white; color: purple';
+                // cell.onmouseover = () => cell.style.cssText = 'background-color: white; color: purple';
+                cell.onmouseover = () => {
+                    cell.style.backgroundColor = randomizeColor(1, 255);
+                }
                 row.appendChild(cell);
             }
         }
