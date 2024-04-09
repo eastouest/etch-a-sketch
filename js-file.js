@@ -1,10 +1,11 @@
 const container = document.querySelector('#container');
 container.style.cssText = 'display: flex; flex-wrap: wrap; flex-direction: row; height: 100vh; width: 100%;';
-let gridCount = 256;
+let defaultGrid = 16 * 16;
 const btn = document.querySelector("#btn");
+const table = document.querySelector("#c-table");
 
-function createGrid(){
-    for (let i = 0; i < gridCount; i++) {
+function createGrid() {
+    for (let i = 0; i < defaultGrid; i++) {
         const div = document.createElement('div');
         div.style.cssText = 'color: white; background: purple; width: 6.25%;'
         div.textContent = 'Hello World!';
@@ -13,29 +14,29 @@ function createGrid(){
     };
 };
 createGrid();
-    const button = document.querySelector('#button-container');
-    button.style.cssText = 'display: flex; width: 100%';
 
 function createTable() {
-	let grid = prompt("Enter a value from 1 to 100");
+    let grid = prompt("Enter a value from 1 to 100");
     if (grid > 100 || grid < 1) {
         alert('Please enter a value between 1 and 100');
         prompt("Enter a value from 1 to 100");
-    }
-    else {
+    } else {
         container.innerHTML = "";
         const table = document.createElement('table');
         table.id = "tb";
-        table.style.cssText = 'border: 1px rgb(#CCC); max-width: 960px'
-        for (var i = 0; i < parseInt(grid); i++) {
-            var row = document.createElement("tr");
+
+        for (let i = 0; i < parseInt(grid); i++) {
+            const row = document.createElement("tr");
             table.appendChild(row);
-            for (var c = 0; c < parseInt(grid); c++) {
-              var cell = document.createElement("td");
-              cell.textContent = 'Hello world!';
-              row.appendChild(cell)
+
+            for (let c = 0; c < parseInt(grid); c++) {
+                const cell = document.createElement("td");
+                cell.style.cssText = 'background-color: purple; color: white'; // Initial cell style
+                cell.textContent = "Hello world!";
+                cell.onmouseover = () => cell.style.cssText = 'background-color: white; color: purple';
+                row.appendChild(cell);
             }
-          };
-          container.appendChild(table);
         }
-    };
+        container.appendChild(table);
+    }
+}
