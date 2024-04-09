@@ -14,8 +14,9 @@ function createGrid(){
 };
 createGrid();
     const button = document.querySelector('#button-container');
-    button.style.cssText = 'width: 100%';
-function changeGrid() {
+    button.style.cssText = 'display: flex; width: 100%';
+
+function createTable() {
 	let grid = prompt("Enter a value from 1 to 100");
     if (grid > 100 || grid < 1) {
         alert('Please enter a value between 1 and 100');
@@ -23,12 +24,18 @@ function changeGrid() {
     }
     else {
         container.innerHTML = "";
-        gridCount = (grid * grid);
-        for (let i = 0; i < gridCount; i++){
-            const div = document.createElement('div');
-            div.style.cssText = 'color: white; background: purple';
-            div.textContent = 'hiya';
-            container.appendChild(div);
+        const table = document.createElement('table');
+        table.id = "tb";
+        table.style.cssText = 'border: 1px rgb(#CCC); max-width: 960px'
+        for (var i = 0; i < parseInt(grid); i++) {
+            var row = document.createElement("tr");
+            table.appendChild(row);
+            for (var c = 0; c < parseInt(grid); c++) {
+              var cell = document.createElement("td");
+              cell.textContent = 'Hello world!';
+              row.appendChild(cell)
+            }
+          };
+          container.appendChild(table);
         }
     };
-    }
